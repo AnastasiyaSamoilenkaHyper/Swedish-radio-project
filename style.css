@@ -117,10 +117,10 @@ audio {
   font-size: 0.75rem;
 }
 
-/* i.fas.microphone {
+i.fas.microphone {
   background-color: red;
   color: red;
-} */
+}
 /* 
 @media (max-width: 1200px) {
   #search-form { width: 50%; }

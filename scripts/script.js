@@ -14,7 +14,7 @@ startBtn.addEventListener("click", doPages);
 function doPages() {
   document.getElementsByClassName("start__h1")[0].innerHTML = "welcome";
   startBtn.style.display = "none";
-  app.style.margin="1rem auto"
+  app.style.margin = "1rem auto";
   if (startBtn.style.display == "none") {
     ///////////////////FETCH JSON//////////////////////////////
     fetch("https://api.sr.se/api/v2/channels?pagination=false&format=json")
@@ -41,7 +41,7 @@ function doPages() {
 
         const recognition = new SpeechRecognition();
         recognition.continuous = true;
-        // recognition.lang = "sv-SE";
+        recognition.lang = "sv-SE";
 
         // searchForm.insertAdjacentHTML(
         //   "beforeend",
@@ -56,6 +56,8 @@ function doPages() {
 
         const micBtn = container.querySelector(".button");
         const micIcon = micBtn.firstElementChild;
+
+        recognition.start();
 
         micBtn.addEventListener("click", micBtnClick);
         function micBtnClick() {
@@ -88,6 +90,16 @@ function doPages() {
         function resultOfSpeechRecognition(event) {
           const current = event.resultIndex;
           const transcript = event.results[current][0].transcript;
+
+          if (transcript.toLowerCase().trim() === "spela") {
+            document.querySelector("audio").play();
+          }
+          if (transcript.toLowerCase().trim() === "avsluta") {
+            document.querySelector("audio").pause();
+          }
+          if (transcript.toLowerCase().trim() === "nästa") {
+            doPages();
+          }
 
           if (transcript.toLowerCase().trim() === "stop recording") {
             recognition.stop();
