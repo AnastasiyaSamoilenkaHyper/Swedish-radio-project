@@ -7,11 +7,14 @@
 body {
   display: flex;
   justify-content: center;
+  background-color: #003F5C;
+  color: white;
 }
 #app {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20vh auto;
   /* max-width: 50%; */
 }
 
@@ -21,13 +24,21 @@ img {
   margin: 1.5rem;
 }
 
+#btn__start{
+  background-color: #58508D;
+  color: white;
+  font-size: 4.5rem;
+  padding: 5rem;
+  border-radius: 45px;
+  margin: 18vh auto;
+}
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-body {
+/* body {
   font-family: "Montserrat", sans-serif;
   background-color: #025677;
   color: #fff;
-}
+} */
 
 .container {
   display: flex;
