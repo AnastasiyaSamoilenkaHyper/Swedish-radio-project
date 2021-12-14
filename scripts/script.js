@@ -4,9 +4,15 @@ let container = document.getElementsByClassName("container")[0];
 ///////////////////FIRST PAGE////////////////////////////////
 
 let startBtn = createBtn("btn__start", "start");
+app.insertAdjacentHTML(
+  "afterbegin",
+  '<h1 class="start__h1">Choose your radio station</h1>'
+);
+
 startBtn.addEventListener("click", doPages);
 
 function doPages() {
+  document.getElementsByClassName("start__h1")[0].innerHTML = "welcome";
   startBtn.style.display = "none";
   if (startBtn.style.display == "none") {
     ///////////////////FETCH JSON//////////////////////////////
@@ -19,7 +25,6 @@ function doPages() {
       add_image(data, channelNumber);
       add_audio(data, channelNumber);
       createForm();
-
 
       /////////////Speach recognition/////////////////
       const searchForm = document.querySelector("#search-form");

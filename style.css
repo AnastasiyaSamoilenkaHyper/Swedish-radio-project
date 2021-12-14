@@ -7,7 +7,7 @@
 body {
   display: flex;
   justify-content: center;
-  background-color: #003F5C;
+  background-color: #003f5c;
   color: white;
 }
 #app {
@@ -26,16 +26,19 @@ img {
 
 audio {
   width: 400px;
-  
 }
 
-#btn__start{
-  background-color: #58508D;
+#btn__start {
+  background-color: #58508d;
   color: white;
   font-size: 4.5rem;
   padding: 5rem;
   border-radius: 45px;
-  margin: 18vh auto;
+  margin: 12vh auto;
+}
+
+.start__h1 {
+  font-size: 3.5rem;
 }
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
