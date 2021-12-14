@@ -14,6 +14,7 @@ startBtn.addEventListener("click", doPages);
 function doPages() {
   document.getElementsByClassName("start__h1")[0].innerHTML = "welcome";
   startBtn.style.display = "none";
+  app.style.margin="1rem auto"
   if (startBtn.style.display == "none") {
     ///////////////////FETCH JSON//////////////////////////////
     fetch("https://api.sr.se/api/v2/channels?pagination=false&format=json")
@@ -42,17 +43,23 @@ function doPages() {
         recognition.continuous = true;
         // recognition.lang = "sv-SE";
 
-        searchForm.insertAdjacentHTML(
-          "beforeend",
-          '<button type="button"><i class="fas fa-microphone"></i></button>'
-        );
+        // searchForm.insertAdjacentHTML(
+        //   "beforeend",
+        //   '<button type="button"><i class="fas fa-microphone"></i></button>'
+        // );
+
+        createIcon("fas", "fa-microphone", "button", container);
+
+
+
         searchFormInput.style.paddingRight = "50px";
 
-        const micBtn = searchForm.querySelector("button");
+        const micBtn = container.querySelector(".button");
         const micIcon = micBtn.firstElementChild;
 
         micBtn.addEventListener("click", micBtnClick);
         function micBtnClick() {
+          console.log("micBtn clicked")
           if (micIcon.classList.contains("fa-microphone")) {
             // Start Voice Recognition
             recognition.start(); // First time you have to allow access to mic!
@@ -164,4 +171,18 @@ function createForm() {
   container.appendChild(form);
   form.append(input);
   form.append(p);
+}
+
+function createIcon(className1, className2, className3, placeToAppend) {
+  let btn = document.createElement("button");
+  btn.className= className3;
+  let i = document.createElement("i");
+
+  btn.innerHTML = "press to record/ stop recording";
+  i.classList.add(className1);
+  i.classList.add(className2);
+  btn.append(i);
+  placeToAppend.append(btn);
+
+  
 }
