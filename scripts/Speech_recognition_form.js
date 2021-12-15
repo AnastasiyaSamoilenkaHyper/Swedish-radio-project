@@ -1,3 +1,5 @@
+import { doRandomNumber } from "./Page.js";
+
 export function createSpeechRecognition(container) {
   const searchForm = document.querySelector("#search-form");
   const searchFormInput = searchForm.querySelector("input"); // <=> document.querySelector("#search-form input");
@@ -129,4 +131,23 @@ export function createForm(container) {
   container.appendChild(form);
   form.append(input);
   form.append(p);
+}
+
+function createNewPage() {
+  fetch("https://api.sr.se/api/v2/channels?pagination=false&format=json")
+    .then((response) => response.json())
+    .then((data) => rendernext(data));
+
+  function rendernext(data) {
+    let channelNumber = doRandomNumber(data.channels.length);
+
+    let img = document.querySelector("img");
+    img.src = data.channels[channelNumber].image.toString();
+
+    let source = document.querySelector("source");
+    source.src = data.channels[channelNumber].liveaudio.url.toString();
+    let audio = document.querySelector("audio");
+    audio.load();
+    audio.play();
+  }
 }
