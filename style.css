@@ -85,7 +85,10 @@ audio {
 }
 
 #search-form {
+  display: flex;
+  flex-direction: column;
   margin: 2rem;
+
 }
 
 #search-form input {

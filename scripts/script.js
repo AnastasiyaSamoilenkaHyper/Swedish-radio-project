@@ -41,16 +41,12 @@ function doPages() {
 
         const recognition = new SpeechRecognition();
         recognition.continuous = true;
-        recognition.lang = "sv-SE";
-
-        // searchForm.insertAdjacentHTML(
-        //   "beforeend",
-        //   '<button type="button"><i class="fas fa-microphone"></i></button>'
-        // );
+        // recognition.lang = "sv-SE";
+        recognition.lang = "en-US";
 
         createIcon("fas", "fa-microphone", "button", container);
 
-
+        // container.innerHTML = `<button type="button"><img src='./microphone-solid.svg' class='fa-microphone'></button>`
 
         searchFormInput.style.paddingRight = "50px";
 
@@ -61,7 +57,7 @@ function doPages() {
 
         micBtn.addEventListener("click", micBtnClick);
         function micBtnClick() {
-          console.log("micBtn clicked")
+          console.log("micBtn clicked");
           if (micIcon.classList.contains("fa-microphone")) {
             // Start Voice Recognition
             recognition.start(); // First time you have to allow access to mic!
@@ -91,13 +87,13 @@ function doPages() {
           const current = event.resultIndex;
           const transcript = event.results[current][0].transcript;
 
-          if (transcript.toLowerCase().trim() === "spela") {
+          if (transcript.toLowerCase().trim() === "play") {
             document.querySelector("audio").play();
           }
-          if (transcript.toLowerCase().trim() === "avsluta") {
+          if (transcript.toLowerCase().trim() === "stop") {
             document.querySelector("audio").pause();
           }
-          if (transcript.toLowerCase().trim() === "nästa") {
+          if (transcript.toLowerCase().trim() === "next song") {
             doPages();
           }
 
@@ -122,7 +118,7 @@ function doPages() {
         }
 
         info.textContent =
-          'Voice Commands: "stop recording", "reset input", "go", "give me a song"';
+          'Voice Commands: "next song", "play", "stop", "stop recording", "reset input", "go", "next song"';
       } else {
         console.log("Your Browser does not support speech Recognition");
         info.textContent = "Your Browser does not support Speech Recognition";
@@ -187,14 +183,12 @@ function createForm() {
 
 function createIcon(className1, className2, className3, placeToAppend) {
   let btn = document.createElement("button");
-  btn.className= className3;
-  let i = document.createElement("i");
-
-  btn.innerHTML = "press to record/ stop recording";
-  i.classList.add(className1);
-  i.classList.add(className2);
-  btn.append(i);
+  btn.className = className3;
+  let img = document.createElement("img");
+  img.src = "./microphone-solid.svg";
+  // btn.innerHTML = "press to record/ stop recording";
+  img.classList.add(className1);
+  img.classList.add(className2);
+  btn.append(img);
   placeToAppend.append(btn);
-
-  
 }
