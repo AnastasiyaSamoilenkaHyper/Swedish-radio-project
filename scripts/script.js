@@ -93,8 +93,8 @@ function doPages() {
           if (transcript.toLowerCase().trim() === "stop") {
             document.querySelector("audio").pause();
           }
-          if (transcript.toLowerCase().trim() === "next song") {
-            doPages();
+          if (transcript.toLowerCase().trim() === "next") {
+            createNewPage();
           }
 
           if (transcript.toLowerCase().trim() === "stop recording") {
@@ -143,6 +143,26 @@ function doPages() {
       audio.append(source);
       document.getElementsByClassName("container")[0].appendChild(audio);
     }
+  }
+}
+
+
+function createNewPage() {
+  fetch("https://api.sr.se/api/v2/channels?pagination=false&format=json")
+      .then((response) => response.json())
+      .then((data) => rendernext(data));
+
+  function rendernext(data) {
+    let channelNumber = doRandomNumber(data.channels.length);
+
+    let img = document.querySelector("img");
+    img.src = data.channels[channelNumber].image.toString();
+
+    let source = document.querySelector("source");
+    source.src = data.channels[channelNumber].liveaudio.url.toString();
+    let audio = document.querySelector("audio");
+    audio.load();
+    audio.play();
   }
 }
 
