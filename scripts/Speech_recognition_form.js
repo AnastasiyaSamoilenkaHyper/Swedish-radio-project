@@ -91,7 +91,7 @@ export function createSpeechRecognition(container) {
     }
 
     info.textContent =
-      'Voice Commands: "next song", "play", "stop", "stop recording", "reset input", "go", "next song"';
+      'Voice Commands: "next", "play", "stop", "stop recording", "reset input", "go"';
   } else {
     console.log("Your Browser does not support speech Recognition");
     info.textContent = "Your Browser does not support Speech Recognition";
@@ -121,7 +121,7 @@ export function createForm(container) {
   let input = document.createElement("input");
   input.name = "q";
   input.type = "text";
-  input.placeholder = "Search Google...";
+  input.placeholder = "Speak please...";
   input.autocomplete = "off";
   input.autofocus = "true";
   // p
