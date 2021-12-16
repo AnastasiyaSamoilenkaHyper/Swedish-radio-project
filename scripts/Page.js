@@ -14,7 +14,6 @@ export async function doPages() {
 
   
   if (startBtn.style.display == "none") {
-    ///////////////////FETCH JSON//////////////////////////////
     fetch("https://api.sr.se/api/v2/channels?pagination=false&format=json")
       .then((response) => response.json())
       .then((data) => render(data));
@@ -27,8 +26,6 @@ export async function doPages() {
 
       /////////////Speech recognition/////////////////
       createSpeechRecognition(container);
-
-      /////////////////////refactored functions/////////////////
 
       function add_image(data, i) {
         let img = document.createElement("img");
