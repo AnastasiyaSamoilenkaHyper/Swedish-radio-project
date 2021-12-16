@@ -17,7 +17,7 @@ export function createSpeechRecognition(container) {
     // recognition.lang = "sv-SE";
     recognition.lang = "en-US";
 
-    createIcon("fas", "fa-microphone", "button", container);
+    createIcon("fa-microphone", "button", container);
 
     // container.innerHTML = `<button type="button"><img src='./microphone-solid.svg' class='fa-microphone'></button>`
 
@@ -98,16 +98,14 @@ export function createSpeechRecognition(container) {
   }
 }
 
-function createIcon(className1, className2, className3, placeToAppend) {
+function createIcon(imgClassName, btnClassName, placeToAppendBtn) {
   let btn = document.createElement("button");
-  btn.className = className3;
+  btn.className = btnClassName;
   let img = document.createElement("img");
   img.src = "./microphone-solid.svg";
-  // btn.innerHTML = "press to record/ stop recording";
-  img.classList.add(className1);
-  img.classList.add(className2);
+  img.classList.add(imgClassName);
   btn.append(img);
-  placeToAppend.append(btn);
+  placeToAppendBtn.append(btn);
 }
 
 export function createForm(container) {

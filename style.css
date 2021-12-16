@@ -47,14 +47,15 @@ audio {
   font-size: 3.5rem;
 }
 
-/* .fa-microphone {
-  font-size: 1.5rem;
+.fa-microphone {
+  /* font-size: 1.5rem;
   color: black;
-  height: 1.5rem;
-} */
+  height: 1.5rem; */
+ height: 20px;
+  width: 2rem;
+}
 
-.fas {
-  /* background-color: white; */
+.fa-microphone-slash {
   height: 20px;
   width: 2rem;
 }
