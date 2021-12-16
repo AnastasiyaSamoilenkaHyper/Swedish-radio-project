@@ -4,6 +4,6 @@ export let startBtn = createBtn("btn__start", "start");
   let btn = document.createElement("button");
   btn.id = idName.toString();
   btn.innerHTML = text.toString();
-  app.append(btn);
+  document.querySelector(".container").append(btn);
   return btn;
 }

@@ -19,8 +19,6 @@ export function createSpeechRecognition(container) {
 
     createIcon("fa-microphone", "button", container);
 
-    // container.innerHTML = `<button type="button"><img src='./microphone-solid.svg' class='fa-microphone'></button>`
-
     searchFormInput.style.paddingRight = "50px";
 
     const micBtn = container.querySelector(".button");
@@ -89,9 +87,6 @@ export function createSpeechRecognition(container) {
       //   searchForm.submit();
       // }, 500);
     }
-
-    info.textContent =
-      'Voice Commands: "next", "play", "stop", "stop recording", "reset input", "go"';
   } else {
     console.log("Your Browser does not support speech Recognition");
     info.textContent = "Your Browser does not support Speech Recognition";

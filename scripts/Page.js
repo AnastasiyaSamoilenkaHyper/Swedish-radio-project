@@ -4,15 +4,15 @@ import {
   createForm,
 } from "./Speech_recognition_form.js";
 
-
 let container = document.getElementsByClassName("container")[0];
 
 export async function doPages() {
-  document.getElementsByClassName("start__h1")[0].innerHTML = "welcome";
+  document.getElementsByClassName("start__h1")[0].innerHTML =
+    " Voice commands: play, stop, next, go, stop recording, clear input";
+
   startBtn.style.display = "none";
   app.style.margin = "1rem auto";
 
-  
   if (startBtn.style.display == "none") {
     fetch("https://api.sr.se/api/v2/channels?pagination=false&format=json")
       .then((response) => response.json())
@@ -23,8 +23,8 @@ export async function doPages() {
       add_image(data, channelNumber);
       add_audio(data, channelNumber);
       createForm(container);
-
-      /////////////Speech recognition/////////////////
+      
+      //SPEECH RECOGNITION
       createSpeechRecognition(container);
 
       function add_image(data, i) {
@@ -45,8 +45,6 @@ export async function doPages() {
       }
     }
   }
-
- 
 }
 
 export function doRandomNumber(max) {
