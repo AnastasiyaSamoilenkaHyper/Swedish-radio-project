@@ -77,7 +77,7 @@ audio {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px 50px;
+  /* padding: 30px 50px; */
 }
 
 #search-form {

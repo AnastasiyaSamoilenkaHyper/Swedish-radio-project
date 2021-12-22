@@ -5,6 +5,7 @@ import {
 } from "./Speech_recognition_form.js";
 
 let container = document.getElementsByClassName("container")[0];
+export let fetchedData;
 
 export async function doPages() {
   document.getElementsByClassName("start__h1")[0].innerHTML =
@@ -19,6 +20,7 @@ export async function doPages() {
       .then((data) => render(data));
 
     function render(data) {
+      fetchedData = data;
       let channelNumber = doRandomNumber(data.channels.length);
       add_image(data, channelNumber);
       add_audio(data, channelNumber);

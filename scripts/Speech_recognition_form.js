@@ -1,4 +1,4 @@
-import { doRandomNumber } from "./Page.js";
+import { doRandomNumber, fetchedData } from "./Page.js";
 
 export function createSpeechRecognition(container) {
   const searchForm = document.querySelector("#search-form");
@@ -14,7 +14,7 @@ export function createSpeechRecognition(container) {
 
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
-    // recognition.lang = "sv-SE";
+    // recognition.lang = "ja-JP";
     recognition.lang = "en-US";
 
     createIcon("fa-microphone", "button", container);
@@ -65,7 +65,7 @@ export function createSpeechRecognition(container) {
         document.querySelector("audio").pause();
       }
       if (transcript.toLowerCase().trim() === "next") {
-        createNewPage();
+        createNewPage(fetchedData);
       }
 
       if (transcript.toLowerCase().trim() === "stop recording") {
@@ -126,21 +126,15 @@ export function createForm(container) {
   form.append(p);
 }
 
-function createNewPage() {
-  fetch("https://api.sr.se/api/v2/channels?pagination=false&format=json")
-    .then((response) => response.json())
-    .then((data) => rendernext(data));
-
-  function rendernext(data) {
-    let channelNumber = doRandomNumber(data.channels.length);
-
+function createNewPage(fetchedData) {
+  
+    let channelNumber = doRandomNumber(fetchedData.channels.length);
     let img = document.querySelector("img");
-    img.src = data.channels[channelNumber].image.toString();
+    img.src = fetchedData.channels[channelNumber].image.toString();
 
     let source = document.querySelector("source");
-    source.src = data.channels[channelNumber].liveaudio.url.toString();
+    source.src = fetchedData.channels[channelNumber].liveaudio.url.toString();
     let audio = document.querySelector("audio");
     audio.load();
     audio.play();
-  }
 }
